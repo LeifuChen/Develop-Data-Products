@@ -1,0 +1,75 @@
+---
+title       : Fuel Consumption Prediction based on 'Motor Trend Car Road Tests'
+subtitle    : Course Project for Develop Data Products
+author      : Wargamer1988
+job         : Student
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+---
+
+## Purpose of Web App
+
+1. Predict the fuel consumption based on the entered values of automobile attributes.
+2. The forecasting model is estimated from the dataset: Motor Trend Car Road Tests.
+3. The data was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles.
+
+```{r echo=FALSE}
+library(datasets)
+data(mtcars)
+```
+```{r}
+head(mtcars, n=5)
+```
+
+-----------------------------------
+
+## How to Use
+
+#### To check the records in dataset: Motor Trend Car Road Tests
+
+1. Click the column header to sort a column
+2. Change the number of records in display
+
+#### To use the calculator the user must enter the following information
+
+1. Weight (lb/1000, Min:3 Max:6)
+2. 1/4 mile time (sec, Min:15 Max:20)
+3. Transmission (0 = automatic, 1 = manual)
+
+#### The calculator will then take the input information and output the predicted fuel consumption
+
+-----------------------------------
+
+## Model Explanation
+
+#### The model estimation
+
+```{r echo=FALSE}
+modFit <- lm(mpg ~ wt + qsec + am , data = mtcars)
+summary(modFit)$coefficients
+```
+With the backward-elmination strategy, the above model could be obtained.
+
+#### The calculator works as follows:
+
+* Calculates the fuel consumption as
+
+Fuel Consumption = `r modFit$coef["wt"]` * Weight + `r modFit$coef["qsec"]` * 1/4 mile time + `r modFit$coef["am"]` * Transmission
+
+-----------------------------------
+
+## Example
+
+1. If a user inputs a car:
+ + weight = 3000 lb
+ + 1/4 mile time = 17 sec
+ + Transmission = Manual 
+2. Then the calculator will output the fuel consumption:
+
+```{r echo=FALSE}
+-3.1855*3+1.5998*17+4.2995*1
+```
+

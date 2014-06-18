@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fuel Consumption Prediction based on 'Motor Trend Car Road Tests'</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Fuel Consumption Prediction based on 'Motor Trend Car Road Tests'">
+  <meta name="author" content="Wargamer1988">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Fuel Consumption Prediction based on 'Motor Trend Car Road Tests'</h1>
+    <h2>Course Project for Develop Data Products</h2>
+    <p>Wargamer1988<br/>Student</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Purpose of Web App</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Predict the fuel consumption based on the entered values of automobile attributes.</li>
+<li>The forecasting model is estimated from the dataset: Motor Trend Car Road Tests.</li>
+<li>The data was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles.</li>
+</ol>
+
+<pre><code class="r">head(mtcars, n=5)
+</code></pre>
+
+<pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>How to Use</h2>
+  </hgroup>
+  <article data-timings="">
+    <h4>To check the records in dataset: Motor Trend Car Road Tests</h4>
+
+<ol>
+<li>Click the column header to sort a column</li>
+<li>Change the number of records in display</li>
+</ol>
+
+<h4>To use the calculator the user must enter the following information</h4>
+
+<ol>
+<li>Weight (lb/1000, Min:3 Max:6)</li>
+<li>1/4 mile time (sec, Min:15 Max:20)</li>
+<li>Transmission (0 = automatic, 1 = manual)</li>
+</ol>
+
+<h4>The calculator will then take the input information and output the predicted fuel consumption</h4>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Model Explanation</h2>
+  </hgroup>
+  <article data-timings="">
+    <h4>The model estimation</h4>
+
+<pre><code>##             Estimate Std. Error t value  Pr(&gt;|t|)
+## (Intercept)    9.618     6.9596   1.382 1.779e-01
+## wt            -3.917     0.7112  -5.507 6.953e-06
+## qsec           1.226     0.2887   4.247 2.162e-04
+## am             2.936     1.4109   2.081 4.672e-02
+</code></pre>
+
+<p>With the backward-elmination strategy, the above model could be obtained.</p>
+
+<h4>The calculator works as follows:</h4>
+
+<ul>
+<li>Calculates the fuel consumption as</li>
+</ul>
+
+<p><em>Fuel Consumption = -3.9165 * Weight + 1.2259 * 1/4 mile time + 2.9358 * Transmission</em></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Example</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>If a user inputs a car:
+
+<ul>
+<li>weight = 3000 lb</li>
+<li>1/4 mile time = 17 sec</li>
+<li>Transmission = Manual </li>
+</ul></li>
+<li>Then the calculator will output the fuel consumption:</li>
+</ol>
+
+<pre><code>## [1] 21.94
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Purpose of Web App'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='How to Use'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Model Explanation'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Example'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
